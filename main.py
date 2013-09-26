@@ -279,10 +279,8 @@ def stichImages(path = "./img"):
 
 
 if __name__ == "__main__":
-    # gpc = GPC("wlan0")
-    # ssid = "theprogo"
-    # pw = "calculator"
-    # getImages()
-
-    stichImages("./img")
+    gpc = GPC("wlan0")
+    ssid = "theprogo"
+    pw = "calculator"
+    #getImages()
 
