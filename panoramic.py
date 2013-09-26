@@ -33,7 +33,7 @@ def takePanoramic():
         GPIO.output(02, True)
         time.sleep(1)
         GPIO.output(02, False)
-        gpc.sendCommand("record_on")
+        gpc.sendCommand(ssid,pw,"record_on")
         time.sleep(1)
 
 
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     gpc = GPC("wlan0")
     ssid = "theprogo"
     pw = "calculator"
-    print gpc.sendCommand("mode_still")
-    print gpc.sendCommand("record_on")
+    print gpc.sendCommand(ssid,pw,"mode_still")
+    print gpc.sendCommand(ssid,pw,"record_on")
     #getImages()
 
