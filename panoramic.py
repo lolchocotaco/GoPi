@@ -1,3 +1,6 @@
+#!/usr/bin/python
+
+
 import time
 import RPi.GPIO as GPIO
 import datetime as dt
