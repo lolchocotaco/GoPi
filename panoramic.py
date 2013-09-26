@@ -3,7 +3,7 @@ import RPi.GPIO as GPIO
 import datetime as dt
 from numpy import linalg
 from GoProController import GoProController as GPC
-from bs4 import BeautifulSoup
+#from bs4 import BeautifulSoup
 from os import listdir
 from os.path import isfile, join
 import urllib2
@@ -35,8 +35,8 @@ def takePanoramic():
 
 
 if __name__ == "__main__":
-    GPIO.setwarnings(False)
     GPIO.setmode(GPIO.BCM)
+    #GPIO.setwarnings(False)
     GPIO.setup(02, GPIO.OUT)
     GPIO.output(02, False)
     GPIO.setup(03, GPIO.OUT)
