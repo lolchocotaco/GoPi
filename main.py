@@ -1,4 +1,4 @@
-import GoProController as GPC
+from GoProController import GoProController as GPC
 
 if __name__ == "__main__":
     gpc = GPC()
