@@ -1,0 +1,33 @@
+INFO    2013-11-16 18:28:10,150   getStatus(theprogo)
+INFO    2013-11-16 18:28:10,151   connect(theprogo) - attempting connection
+INFO    2013-11-16 18:28:13,408   connect(theprogo) - connection success
+INFO    2013-11-16 18:28:13,454   getStatus(theprogo) - result {'fov': '170', 'vidres': '1080p', 'picres': '12MP wide', 'orientation': 'up', 'power': 'on', 'record': 'off', 'mem': 9225, 'batt1': 44, 'summary': 'on', 'raw': {'bacpac/se': '006401000400ff002201000104020101', 'camera/sx': '0000000000000000050000ff0000000001019002002409001e010a0006000400040000000000000000000000000000000000030700000000', 'camera/se': '0000000000000000050000ff000000000101902c002409001e010a00060004'}, 'batt2': 0, 'npics': 30, 'mode': 'video', 'fps': '60', 'minsremaining': 266, 'nvids': 6, 'charging': 'translate error (2)', 'secselapsed': 0}
+INFO    2013-11-16 18:28:42,750   getImage(theprogo)
+WARNING 2013-11-16 18:28:42,885   getImage(theprogo) - failure
+INFO    2013-11-16 18:29:19,395   getStatus(theprogo)
+INFO    2013-11-16 18:29:19,436   getStatus(theprogo) - result {'fov': '170', 'vidres': '1080p', 'picres': '12MP wide', 'orientation': 'up', 'power': 'on', 'record': 'off', 'mem': 9225, 'batt1': 42, 'summary': 'on', 'raw': {'bacpac/se': '006401000400ff002201000104020101', 'camera/sx': '0000000000000000050000ff0000000001019002002409001e010a0006000400040000000000000000000000000000000000030700000000', 'camera/se': '0000000000000000050000ff000000000101902a002409001e010a00060004'}, 'batt2': 0, 'npics': 30, 'mode': 'video', 'fps': '60', 'minsremaining': 266, 'nvids': 6, 'charging': 'translate error (2)', 'secselapsed': 0}
+INFO    2013-11-16 18:29:36,267   getStatus(theprogo)
+INFO    2013-11-16 18:29:36,314   getStatus(theprogo) - result {'fov': '170', 'vidres': '1080p', 'picres': '12MP wide', 'orientation': 'up', 'power': 'on', 'record': 'off', 'mem': 9225, 'batt1': 41, 'summary': 'on', 'raw': {'bacpac/se': '006401000400ff002201000104020101', 'camera/sx': '0000000000000000050000ff0000000001019001002409001e010a0006000400040000000000000000000000000000000000030700000000', 'camera/se': '0000000000000000050000ff0000000001019029002409001e010a00060004'}, 'batt2': 0, 'npics': 30, 'mode': 'video', 'fps': '60', 'minsremaining': 266, 'nvids': 6, 'charging': 'translate error (1)', 'secselapsed': 0}
+INFO    2013-11-16 18:30:20,254   getImage(theprogo)
+WARNING 2013-11-16 18:30:20,255   getImage(theprogo) - failure
+INFO    2013-11-16 18:31:40,618   getImage(theprogo)
+INFO    2013-11-16 18:31:40,619   connect(theprogo) - attempting connection
+INFO    2013-11-16 18:31:44,337   connect(theprogo) - connection success
+WARNING 2013-11-16 18:31:44,338   getImage(theprogo) - failure
+INFO    2013-11-16 18:33:17,481   getImage(theprogo)
+INFO    2013-11-16 18:33:17,481   connect(theprogo) - attempting connection
+INFO    2013-11-16 18:33:25,196   connect(theprogo) - connection success
+WARNING 2013-11-16 18:33:25,197   getImage(theprogo) - failure
+INFO    2013-11-16 18:33:54,321   getImage(theprogo)
+INFO    2013-11-16 18:33:54,322   connect(theprogo) - attempting connection
+INFO    2013-11-16 18:33:59,870   getImage(theprogo)
+INFO    2013-11-16 18:33:59,872   connect(theprogo) - attempting connection
+WARNING 2013-11-16 18:33:59,908   connect(theprogo) - connection failure <class 'dbus.exceptions.DBusException'> ('Method "Get" with signature "ss" on interface "org.freedesktop.DBus.Properties" doesn\'t exist\n',)
+WARNING 2013-11-16 18:33:59,911   connect(theprogo) - connection failure
+WARNING 2013-11-16 18:33:59,914   getImage(theprogo) - failure
+INFO    2013-11-16 18:34:01,965   connect(theprogo) - connection success
+WARNING 2013-11-16 18:34:01,967   getImage(theprogo) - failure
+INFO    2013-11-16 18:53:44,784   getImage(theprogo)
+INFO    2013-11-16 18:53:44,785   connect(theprogo) - attempting connection
+INFO    2013-11-16 18:53:52,448   connect(theprogo) - connection success
+WARNING 2013-11-16 18:54:57,598   getImage(theprogo) - failure

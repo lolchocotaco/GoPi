@@ -214,7 +214,7 @@ class GoProController:
     connection_path = None
     settings_path = None
     
-    def __init__(self, device_name = "ra0", log_file = "controller.log", log_level = logging.INFO, log_format = '%(levelname)-7s %(asctime)s   %(message)s'):
+    def __init__(self, device_name = "e", log_file = "controller.log", log_level = logging.INFO, log_format = '%(levelname)-7s %(asctime)s   %(message)s'):
         # setup log
         logging.basicConfig(filename=log_file, format=log_format, level=log_level)
         console = logging.StreamHandler()
