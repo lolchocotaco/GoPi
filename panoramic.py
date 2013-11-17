@@ -26,12 +26,30 @@ def getImages(dir="http://10.5.5.9:8080/videos/DCIM/100GOPRO/"):
 
 
 def takePanoramic():
-    pass
+    for n in xrange(6):
+        GPIO.output(02, True)
+        time.sleep(1)
+        GPIO.output(02, False)
+        gpc.sendCommand("record_on")
+        time.sleep(1)
 
 
 if __name__ == "__main__":
+    GPIO.setwarnings(False)
+    GPIO.setmode(GPIO.BCM)
+    GPIO.setup(02, GPIO.OUT)
+    GPIO.output(02, False)
+    GPIO.setup(03, GPIO.OUT)
+    GPIO.output(03, False)
+    GPIO.setup(04, GPIO.OUT)
+    GPIO.output(04, False)
+    GPIO.setup(14, GPIO.OUT)
+    GPIO.output(14, False)
+
     gpc = GPC("wlan0")
     ssid = "theprogo"
     pw = "calculator"
+    print gpc.sendCommand("mode_still")
+    print gpc.sendCommand("record_on")
     #getImages()
 
