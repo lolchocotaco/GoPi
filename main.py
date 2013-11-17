@@ -95,7 +95,6 @@ def stichImages(path = "./img"):
     for x in range(2):
         im = cv2.imread(imgPath[x])
         # newX, newY = im.shape[1]/4,im.shape[0]/4
-        # newim = cv2.resize(im,(newX,newY))
         newim = im
         rgbImg.append(newim)
         gray_im = cv2.cvtColor(newim, cv2.COLOR_BGR2GRAY)
@@ -149,9 +148,9 @@ def stichImages(path = "./img"):
         move_h[1,2] += -min_y
         max_y += -min_y
 
-    print "Homography: \n", H
-    print "Inverse Homography: \n", H_inv
-    print "Min Points: ", (min_x, min_y)
+    # print "Homography: \n", H
+    # print "Inverse Homography: \n", H_inv
+    # print "Min Points: ", (min_x, min_y)
 
     mod_inv_h = move_h * H_inv
 
@@ -162,13 +161,11 @@ def stichImages(path = "./img"):
 
     # Warp the new image given the homography from the old image
     base_img_warp = cv2.warpPerspective(rgbImg[0], move_h, (img_w, img_h))
-    print "Warped base image"
 
     # utils.showImage(base_img_warp, scale=(0.2, 0.2), timeout=5000)
     # cv2.destroyAllWindows()
 
     next_img_warp = cv2.warpPerspective(rgbImg[1], mod_inv_h, (img_w, img_h))
-    print "Warped next image"
     enlarged_base_img = np.zeros((img_h, img_w, 3), np.uint8)
 
 
@@ -189,7 +186,6 @@ def stichImages(path = "./img"):
     final_gray = cv2.cvtColor(final_img, cv2.COLOR_BGR2GRAY)
     _, thresh = cv2.threshold(final_gray, 1, 255, cv2.THRESH_BINARY)
     contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-    print "Found %d contours..." % (len(contours))
 
     max_area = 0
     best_rect = (0,0,0,0)
@@ -208,8 +204,8 @@ def stichImages(path = "./img"):
             best_rect = (x,y,w,h)
 
     if ( max_area > 0 ):
-        print "Maximum Contour: ", max_area
-        print "Best Rectangle: ", best_rect
+        # print "Maximum Contour: ", max_area
+        # print "Best Rectangle: ", best_rect
 
         final_img_crop = final_img[best_rect[1]:best_rect[1]+best_rect[3],
                 best_rect[0]:best_rect[0]+best_rect[2]]
