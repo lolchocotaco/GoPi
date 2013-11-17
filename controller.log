@@ -67,3 +67,7 @@ INFO    2013-11-16 23:14:51,543   Starting new HTTP connection (1): 10.5.5.9
 INFO    2013-11-16 23:15:13,977   Starting new HTTP connection (1): 10.5.5.9
 INFO    2013-11-16 23:15:58,943   Starting new HTTP connection (1): 10.5.5.9
 INFO    2013-11-16 23:23:36,094   Starting new HTTP connection (1): 10.5.5.9
+INFO    2013-11-17 04:33:00,256   getImage(theprogo)
+INFO    2013-11-17 04:33:00,321   connect(theprogo) - attempting connection
+INFO    2013-11-17 04:33:06,912   connect(theprogo) - connection success
+WARNING 2013-11-17 04:33:07,260   getImage(theprogo) - failure
