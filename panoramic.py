@@ -1,3 +1,6 @@
+import time
+import RPi.GPIO as GPIO
+import datetime as dt
 from numpy import linalg
 from GoProController import GoProController as GPC
 from bs4 import BeautifulSoup
@@ -21,8 +24,9 @@ def getImages(dir="http://10.5.5.9:8080/videos/DCIM/100GOPRO/"):
         outFile.write(imgData)
         outFile.close()
 
-def takePanoramic():
 
+def takePanoramic():
+    pass
 
 
 if __name__ == "__main__":
