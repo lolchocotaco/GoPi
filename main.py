@@ -17,7 +17,11 @@ def getImageNames(dir="http://10.5.5.9:8080/videos/DCIM/100GOPRO/"):
     #        linkList += [link["href"]]
     #        #print(link["href"])
 
-    print(linkList[-5:])
+    print(linkList[-3:])
+    for imageLink in linkList[-3:]:
+        imgRqst = urllib2.Request(imageLink)
+        imgData = urllib2.urlopen(imgRqst).read()
+        print(imgData)
 
 
     #r = requests.get(dir)
