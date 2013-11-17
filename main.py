@@ -7,6 +7,7 @@ import urllib2
 import cv2
 import numpy as np
 import math
+import matplotlib.pyplot as plt
 
 
 def getImages(dir="http://10.5.5.9:8080/videos/DCIM/100GOPRO/"):
@@ -94,8 +95,9 @@ def stichImages(path = "./img"):
     hessian_threshold = 500
     for x in range(2):
         im = cv2.imread(imgPath[x])
-        # newX, newY = im.shape[1]/4,im.shape[0]/4
-        newim = im
+        newX, newY = im.shape[1]/4,im.shape[0]/4
+        newim = cv2.resize(im,(newX,newY))
+        # newim = im
         rgbImg.append(newim)
         gray_im = cv2.cvtColor(newim, cv2.COLOR_BGR2GRAY)
         grayImgs.append(gray_im)
@@ -119,6 +121,10 @@ def stichImages(path = "./img"):
     matches_subset = filter_matches(matches)
     print("New MatchCount {0}".format(len(matches_subset)))
 
+    plt.figure()
+    plt.hist([x.distance for x in matches_subset],  50, normed=1, histtype='step')
+
+
     distance = imageDistance(matches_subset)
     kp1 =[]
     kp2 =[]
@@ -129,96 +135,111 @@ def stichImages(path = "./img"):
     p1 = np.array([k.pt for k in kp1])
     p2 = np.array([k.pt for k in kp2])
 
-    H, status = cv2.findHomography(p1, p2, cv2.RANSAC, 5.0)
-    print '%d / %d  inliers/matched' % (np.sum(status), len(status))
+    for p in p1:
+        print p
+    print "======================="
+    for p in p2:
+        print p
 
-    # Diff sizes
-    H_inv = linalg.inv(H)
-    (min_x, min_y, max_x, max_y) = findDimensions(grayImgs[1], H_inv)
-    max_x = max(max_x, grayImgs[0].shape[1])
-    max_y = max(max_y, grayImgs[0].shape[0])
+    # img3= cv2.drawKeypoints(grayImgs[0],matches_subset[0])
+    # img4= cv2.drawKeypoints(grayImgs[1],matches_subset[1])
 
-    move_h = np.matrix(np.identity(3), np.float32)
+    # imStiched = np.concatenate((img3, img4), axis=1)
+    #
+    # grayImgs.append(img3)
+    # grayImgs.append(img4)
+    # grayImgs.append(imStiched)
 
-    if ( min_x < 0 ):
-        move_h[0,2] += -min_x
-        max_x += -min_x
-
-    if ( min_y < 0 ):
-        move_h[1,2] += -min_y
-        max_y += -min_y
-
-    # print "Homography: \n", H
-    # print "Inverse Homography: \n", H_inv
-    # print "Min Points: ", (min_x, min_y)
-
-    mod_inv_h = move_h * H_inv
-
-    img_w = int(math.ceil(max_x))
-    img_h = int(math.ceil(max_y))
-
-    print "New Dimensions: ", (img_w, img_h)
-
-    # Warp the new image given the homography from the old image
-    base_img_warp = cv2.warpPerspective(rgbImg[0], move_h, (img_w, img_h))
-
-    # utils.showImage(base_img_warp, scale=(0.2, 0.2), timeout=5000)
-    # cv2.destroyAllWindows()
-
-    next_img_warp = cv2.warpPerspective(rgbImg[1], mod_inv_h, (img_w, img_h))
-    enlarged_base_img = np.zeros((img_h, img_w, 3), np.uint8)
-
-
-
-    (ret,data_map) = cv2.threshold(cv2.cvtColor(next_img_warp, cv2.COLOR_BGR2GRAY),
-            0, 255, cv2.THRESH_BINARY)
-
-    enlarged_base_img = cv2.add(enlarged_base_img, base_img_warp,
-        mask=np.bitwise_not(data_map),
-        dtype=cv2.CV_8U)
-
-    # Now add the warped image
-    final_img = cv2.add(enlarged_base_img, next_img_warp,
-        dtype=cv2.CV_8U)
-
-
-
-    final_gray = cv2.cvtColor(final_img, cv2.COLOR_BGR2GRAY)
-    _, thresh = cv2.threshold(final_gray, 1, 255, cv2.THRESH_BINARY)
-    contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
-
-    max_area = 0
-    best_rect = (0,0,0,0)
-
-    for cnt in contours:
-        x,y,w,h = cv2.boundingRect(cnt)
-        # print "Bounding Rectangle: ", (x,y,w,h)
-
-        deltaHeight = h-y
-        deltaWidth = w-x
-
-        area = deltaHeight * deltaWidth
-
-        if ( area > max_area and deltaHeight > 0 and deltaWidth > 0):
-            max_area = area
-            best_rect = (x,y,w,h)
-
-    if ( max_area > 0 ):
-        # print "Maximum Contour: ", max_area
-        # print "Best Rectangle: ", best_rect
-
-        final_img_crop = final_img[best_rect[1]:best_rect[1]+best_rect[3],
-                best_rect[0]:best_rect[0]+best_rect[2]]
-
-        # utils.showImage(final_img_crop, scale=(0.2, 0.2), timeout=0)
-        # cv2.destroyAllWindows()
-
-        final_img = final_img_crop
+    # H, status = cv2.findHomography(p1, p2, cv2.RANSAC, 4.0)
+    # print '%d / %d  inliers/matched' % (np.sum(status), len(status))
+    #
+    # # Diff sizes
+    # H_inv = linalg.inv(H)
+    # (min_x, min_y, max_x, max_y) = findDimensions(grayImgs[1], H_inv)
+    # max_x = max(max_x, grayImgs[0].shape[1])
+    # max_y = max(max_y, grayImgs[0].shape[0])
+    #
+    # move_h = np.matrix(np.identity(3), np.float32)
+    #
+    # if ( min_x < 0 ):
+    #     move_h[0,2] += -min_x
+    #     max_x += -min_x
+    #
+    # if ( min_y < 0 ):
+    #     move_h[1,2] += -min_y
+    #     max_y += -min_y
+    #
+    # # print "Homography: \n", H
+    # # print "Inverse Homography: \n", H_inv
+    # # print "Min Points: ", (min_x, min_y)
+    #
+    # mod_inv_h = move_h * H_inv
+    #
+    # img_w = int(math.ceil(max_x))
+    # img_h = int(math.ceil(max_y))
+    #
+    # print "New Dimensions: ", (img_w, img_h)
+    #
+    # # Warp the new image given the homography from the old image
+    # base_img_warp = cv2.warpPerspective(rgbImg[0], move_h, (img_w, img_h))
+    #
+    # # utils.showImage(base_img_warp, scale=(0.2, 0.2), timeout=5000)
+    # # cv2.destroyAllWindows()
+    #
+    # next_img_warp = cv2.warpPerspective(rgbImg[1], mod_inv_h, (img_w, img_h))
+    # enlarged_base_img = np.zeros((img_h, img_w, 3), np.uint8)
+    #
+    #
+    #
+    # (ret,data_map) = cv2.threshold(cv2.cvtColor(next_img_warp, cv2.COLOR_BGR2GRAY),
+    #         0, 255, cv2.THRESH_BINARY)
+    #
+    # enlarged_base_img = cv2.add(enlarged_base_img, base_img_warp,
+    #     mask=np.bitwise_not(data_map),
+    #     dtype=cv2.CV_8U)
+    #
+    # # Now add the warped image
+    # final_img = cv2.add(enlarged_base_img, next_img_warp,
+    #     dtype=cv2.CV_8U)
+    #
+    #
+    #
+    # final_gray = cv2.cvtColor(final_img, cv2.COLOR_BGR2GRAY)
+    # _, thresh = cv2.threshold(final_gray, 1, 255, cv2.THRESH_BINARY)
+    # contours, _ = cv2.findContours(thresh, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_NONE)
+    #
+    # max_area = 0
+    # best_rect = (0,0,0,0)
+    #
+    # for cnt in contours:
+    #     x,y,w,h = cv2.boundingRect(cnt)
+    #     # print "Bounding Rectangle: ", (x,y,w,h)
+    #
+    #     deltaHeight = h-y
+    #     deltaWidth = w-x
+    #
+    #     area = deltaHeight * deltaWidth
+    #
+    #     if ( area > max_area and deltaHeight > 0 and deltaWidth > 0):
+    #         max_area = area
+    #         best_rect = (x,y,w,h)
+    #
+    # if ( max_area > 0 ):
+    #     # print "Maximum Contour: ", max_area
+    #     # print "Best Rectangle: ", best_rect
+    #
+    #     final_img_crop = final_img[best_rect[1]:best_rect[1]+best_rect[3],
+    #             best_rect[0]:best_rect[0]+best_rect[2]]
+    #
+    #     # utils.showImage(final_img_crop, scale=(0.2, 0.2), timeout=0)
+    #     # cv2.destroyAllWindows()
+    #
+    #     final_img = final_img_crop
 
     # Write out the current round
-    cv2.imshow("Final",final_img)
+    # cv2.imshow("Final",final_img)
     # final_filename = "%s/%d.JPG" % (output, round)
-    cv2.imwrite("Shitshit.jpg", final_img)
+    # cv2.imwrite("Shitshit.jpg", final_img)
 
 
 
@@ -251,10 +272,8 @@ def stichImages(path = "./img"):
     # grayImgs.append(img3)
     # # grayImgs.append(img4)
 
-    for x,img in enumerate(grayImgs):
-        cv2.imshow("BW_"+str(x),img)
-
-
+    # for x,img in enumerate(grayImgs):
+    #     cv2.imshow("BW_"+str(x),img)
 
     cv2.waitKey()
 
