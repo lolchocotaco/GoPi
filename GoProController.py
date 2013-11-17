@@ -19,7 +19,7 @@ import dbus
 import time
 from urllib2 import *
 from inspect import isfunction
-import cv2
+# import cv2
 import Image
 import StringIO
 import base64
@@ -393,26 +393,26 @@ class GoProController:
         logging.info('getStatus(%s) - result %s', ssid, status);
         return status
 
-    def getPreviewImage(self, ssid, password):
-        logging.info('getImage(%s)', ssid);
-        if self.connect(ssid, password):
-            try:
-                # use OpenCV to capture a frame and store it in a numpy array
-                stream = cv2.VideoCapture(self.previewURL)
-                success, numpyImage = stream.read()
-                
-                if success:
-                    # use Image to save the image to a file, but actually save it to a string
-                    image = Image.fromarray(numpyImage)
-                    output = StringIO.StringIO()
-                    image.save(output, format="PNG")
-                    str = output.getvalue()
-                    output.close()
-                    
-                    logging.info('getImage(%s) - success!', ssid)
-                    return "data:image/png;base64,"+base64.b64encode(str)
-            except:
-                pass
+    # def getPreviewImage(self, ssid, password):
+    #     logging.info('getImage(%s)', ssid);
+    #     if self.connect(ssid, password):
+    #         try:
+    #             # use OpenCV to capture a frame and store it in a numpy array
+    #             stream = cv2.VideoCapture(self.previewURL)
+    #             success, numpyImage = stream.read()
+    #
+    #             if success:
+    #                 # use Image to save the image to a file, but actually save it to a string
+    #                 image = Image.fromarray(numpyImage)
+    #                 output = StringIO.StringIO()
+    #                 image.save(output, format="PNG")
+    #                 str = output.getvalue()
+    #                 output.close()
+    #
+    #                 logging.info('getImage(%s) - success!', ssid)
+    #                 return "data:image/png;base64,"+base64.b64encode(str)
+    #         except:
+    #             pass
                 
         # catchall return statement
         logging.warning('getImage(%s) - failure', ssid);
