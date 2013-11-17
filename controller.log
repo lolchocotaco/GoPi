@@ -71,3 +71,11 @@ INFO    2013-11-17 04:33:00,256   getImage(theprogo)
 INFO    2013-11-17 04:33:00,321   connect(theprogo) - attempting connection
 INFO    2013-11-17 04:33:06,912   connect(theprogo) - connection success
 WARNING 2013-11-17 04:33:07,260   getImage(theprogo) - failure
+INFO    2013-11-17 12:14:00,511   connect(theprogo) - attempting connection
+INFO    2013-11-17 12:14:08,403   connect(theprogo) - connection success
+INFO    2013-11-17 12:14:56,421   sendCommand(theprogo) - mode_still
+INFO    2013-11-17 12:14:56,430   sendCommand(theprogo) - http success!
+INFO    2013-11-17 12:15:10,596   sendCommand(theprogo) - record_on
+INFO    2013-11-17 12:15:10,606   sendCommand(theprogo) - http success!
+INFO    2013-11-17 12:15:27,933   sendCommand(theprogo) - record_on
+INFO    2013-11-17 12:15:27,944   sendCommand(theprogo) - http success!
