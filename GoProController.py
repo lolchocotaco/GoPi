@@ -392,8 +392,8 @@ class GoProController:
         
         logging.info('getStatus(%s) - result %s', ssid, status);
         return status
-    
-    def getImage(self, ssid, password):
+
+    def getPreviewImage(self, ssid, password):
         logging.info('getImage(%s)', ssid);
         if self.connect(ssid, password):
             try:

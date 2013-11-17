@@ -31,3 +31,39 @@ INFO    2013-11-16 18:53:44,784   getImage(theprogo)
 INFO    2013-11-16 18:53:44,785   connect(theprogo) - attempting connection
 INFO    2013-11-16 18:53:52,448   connect(theprogo) - connection success
 WARNING 2013-11-16 18:54:57,598   getImage(theprogo) - failure
+INFO    2013-11-16 22:17:45,552   getImage(theprogo)
+INFO    2013-11-16 22:17:45,553   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:17:48,304   connect(theprogo) - connection success
+WARNING 2013-11-16 22:17:48,304   getImage(theprogo) - failure
+INFO    2013-11-16 22:18:34,437   getImage(theprogo)
+INFO    2013-11-16 22:18:34,437   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:18:37,982   connect(theprogo) - connection success
+WARNING 2013-11-16 22:18:37,983   getImage(theprogo) - failure
+INFO    2013-11-16 22:38:21,542   getImage(theprogo)
+INFO    2013-11-16 22:38:21,543   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:38:24,570   connect(theprogo) - connection success
+WARNING 2013-11-16 22:38:24,571   getImage(theprogo) - failure
+INFO    2013-11-16 22:52:25,369   getImage(theprogo)
+INFO    2013-11-16 22:52:25,370   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:52:28,060   connect(theprogo) - connection success
+WARNING 2013-11-16 22:52:28,061   getImage(theprogo) - failure
+INFO    2013-11-16 22:54:10,118   getImage(theprogo)
+INFO    2013-11-16 22:54:10,118   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:54:12,973   connect(theprogo) - connection success
+WARNING 2013-11-16 22:54:12,973   getImage(theprogo) - failure
+INFO    2013-11-16 22:54:51,458   getImage(theprogo)
+INFO    2013-11-16 22:54:51,459   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:54:54,431   connect(theprogo) - connection success
+WARNING 2013-11-16 22:54:54,432   getImage(theprogo) - failure
+INFO    2013-11-16 22:56:15,411   getImage(theprogo)
+INFO    2013-11-16 22:56:15,412   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:56:18,784   connect(theprogo) - connection success
+WARNING 2013-11-16 22:56:18,785   getImage(theprogo) - failure
+INFO    2013-11-16 22:57:34,104   getImage(theprogo)
+INFO    2013-11-16 22:57:34,104   connect(theprogo) - attempting connection
+INFO    2013-11-16 22:57:37,263   connect(theprogo) - connection success
+WARNING 2013-11-16 22:57:37,266   getImage(theprogo) - failure
+INFO    2013-11-16 23:14:51,543   Starting new HTTP connection (1): 10.5.5.9
+INFO    2013-11-16 23:15:13,977   Starting new HTTP connection (1): 10.5.5.9
+INFO    2013-11-16 23:15:58,943   Starting new HTTP connection (1): 10.5.5.9
+INFO    2013-11-16 23:23:36,094   Starting new HTTP connection (1): 10.5.5.9
